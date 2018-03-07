@@ -64,6 +64,19 @@ class SEOTools implements SEOContract
     }
 
     /**
+     * Setup Amphtml rel link url.
+     *
+     * @param $description
+     *
+     * @return \Artesaos\SEOTools\Contracts\SEOTools
+     */
+    public function setAmpHtml($url)
+    {
+        $this->metatags()->setAmpHtml($url);
+        return $this;
+    }
+
+    /**
      * Sets the canonical URL.
      *
      * @param string $url
