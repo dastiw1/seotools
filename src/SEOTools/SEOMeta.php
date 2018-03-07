@@ -57,6 +57,13 @@ class SEOMeta implements MetaTagsContract
     protected $metatags = [];
 
     /**
+     * The AMP URL.
+     *
+     * @var string
+     */
+    protected $amphtml;
+
+    /**
      * The canonical URL.
      *
      * @var string
@@ -126,6 +133,7 @@ class SEOMeta implements MetaTagsContract
         $keywords = $this->getKeywords();
         $metatags = $this->getMetatags();
         $canonical = $this->getCanonical();
+        $amphtml = $this->getAmpHtml();
         $prev = $this->getPrev();
         $next = $this->getNext();
         $languages = $this->getAlternateLanguages();
@@ -159,6 +167,11 @@ class SEOMeta implements MetaTagsContract
 
         if ($canonical) {
             $html[] = "<link rel=\"canonical\" href=\"{$canonical}\"/>";
+        }
+
+        
+        if ($amphtml) {
+            $html[] = "<link rel=\"amphtml\" href=\"{$amphtml}\"/>";
         }
 
         if ($prev) {
@@ -484,6 +497,16 @@ class SEOMeta implements MetaTagsContract
     }
 
     /**
+     * Get the canonical URL.
+     *
+     * @return string
+     */
+    public function getAmpHtml()
+    {
+        return $this->amphtml;
+    }
+
+    /**
      * Get the prev URL.
      *
      * @return string
@@ -525,10 +548,10 @@ class SEOMeta implements MetaTagsContract
         $this->next = null;
         $this->prev = null;
         $this->canonical = null;
+        $this->amphtml = null;
         $this->metatags = [];
         $this->keywords = [];
         $this->alternateLanguages = [];
-        $this->canonical = null;
     }
 
     /**
